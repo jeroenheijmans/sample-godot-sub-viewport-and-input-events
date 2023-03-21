@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpxejcusj5pl8"]
+
+[ext_resource type="Script" path="res://MyWorld.gd" id="1_8pf7d"]
+[ext_resource type="PackedScene" uid="uid://bawjih58bawt4" path="res://Thing.tscn" id="2_4ku27"]
+[ext_resource type="Texture2D" uid="uid://c403u3u1e1fdq" path="res://icon.svg" id="3_gskfg"]
+
+[node name="MyWorld" type="Node2D"]
+script = ExtResource("1_8pf7d")
+
+[node name="Thing" parent="." instance=ExtResource("2_4ku27")]
+position = Vector2(300, 300)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.196078)
+scale = Vector2(3, 3)
+texture = ExtResource("3_gskfg")
+centered = false

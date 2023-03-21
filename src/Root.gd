@@ -1,8 +1,7 @@
-extends Node2D
+extends Node
 
-var thing_scene = preload("res://Thing.tscn")
+func _on_button_add_thing_pressed():
+	%MyWorld.add_thing()
 
-func _ready():
-	var other_thing = thing_scene.instantiate()
-	other_thing.position = Vector2(200, 200)
-	add_child(other_thing)
+func _on_button_add_ball_pressed():
+	%MyWorld.add_ball()

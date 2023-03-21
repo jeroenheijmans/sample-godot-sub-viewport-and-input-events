@@ -1,10 +1,73 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbx44qv0m65e2"]
+[gd_scene load_steps=3 format=3 uid="uid://kibxocrmm02d"]
 
 [ext_resource type="Script" path="res://Root.gd" id="1_cc628"]
-[ext_resource type="PackedScene" uid="uid://bawjih58bawt4" path="res://Thing.tscn" id="2_4ku27"]
+[ext_resource type="PackedScene" uid="uid://bpxejcusj5pl8" path="res://MyWorld.tscn" id="1_oxhbj"]
 
-[node name="Root" type="Node2D"]
+[node name="Root" type="Node"]
 script = ExtResource("1_cc628")
 
-[node name="Thing" parent="." instance=ExtResource("2_4ku27")]
-position = Vector2(400, 200)
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
+columns = 3
+
+[node name="Label" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Controls on the left side of the screen:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Middle of the screen with world view:"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Controls on the right side of the screen:"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ButtonAddThing" type="Button" parent="MarginContainer/GridContainer/VBoxContainer"]
+layout_mode = 2
+text = "Add another thing to world."
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/GridContainer/SubViewportContainer"]
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(384, 384)
+render_target_update_mode = 4
+
+[node name="MyWorld" parent="MarginContainer/GridContainer/SubViewportContainer/SubViewport" instance=ExtResource("1_oxhbj")]
+unique_name_in_owner = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ButtonAddBall" type="Button" parent="MarginContainer/GridContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Throw ball into world!"
+
+[connection signal="pressed" from="MarginContainer/GridContainer/VBoxContainer/ButtonAddThing" to="." method="_on_button_add_thing_pressed"]
+[connection signal="pressed" from="MarginContainer/GridContainer/VBoxContainer2/ButtonAddBall" to="." method="_on_button_add_ball_pressed"]
