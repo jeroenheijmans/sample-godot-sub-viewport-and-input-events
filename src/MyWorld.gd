@@ -11,6 +11,14 @@ func add_thing():
 	other_thing.position = Vector2(randi_range(0, 384), randi_range(250, 350))
 	other_thing.rotation = randi_range(-5, 5)
 	add_child(other_thing)
+	
+	# See also: https://gamedev.stackexchange.com/a/204972/16701
+	prints("-----------------------------------------")
+	prints("Show connected signals for new component:")
+	var signal_target = other_thing
+	for connections in signal_target.get_incoming_connections():
+		for key in connections:
+			prints(key, "=>", connections[key])
 
 func add_ball():
 	var ball = ball_scene.instantiate() as RigidBody2D
