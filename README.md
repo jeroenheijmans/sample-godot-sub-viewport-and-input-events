@@ -7,6 +7,10 @@ Disclaimer: this was created while _learning_ Godot programming.
 I'm a web developer by trade, not a game developer.
 Take this sample with a grain of salt.
 
+## ⚠️ Notice about updates
+
+Note that this repository is provided "as-is" and will most likely not receive any (security) updates.
+
 ## About the sample
 
 Running this sample allows you to:
